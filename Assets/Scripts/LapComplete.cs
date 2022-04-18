@@ -13,25 +13,50 @@ public class LapComplete : MonoBehaviour
 
 	public GameObject CompleteText;
 
-	void OnTriggerEnter()
+	public GameObject LapCounter;
+	public int LapsDone;
+
+	//public float RawTime;
+
+	public GameObject RaceFinish;
+	public int LapsRequirement = 1;
+
+    private void Start()
+    {
+		LapsDone = 0;
+    }
+
+    void Update()
+    {
+        if (LapsDone == LapsRequirement)
+        {
+			RaceFinish.SetActive(true);
+        }
+    }
+
+    void OnTriggerEnter()
 	{
+		if (LapsDone < LapsRequirement)
+			LapsDone += 1;
+		//RawTime = PlayerPrefs.GetFloat("RawTime");
+
 		int MinCount = PlayerPrefs.GetInt("MinSave");
 		int SecCount = PlayerPrefs.GetInt("SecSave");
 		float MilliCount = PlayerPrefs.GetFloat("MilliSave");
 
 		bool isBest = true;
 
-		if (LapTimeManager.MinuteCount > MinCount)
+		if (LapTimeManager.MinuteCount < MinCount)
 		{
 			isBest = false;
 		}
 		else
 			if (LapTimeManager.MinuteCount == MinCount)
-			if (LapTimeManager.SecondCount > SecCount)
+			if (LapTimeManager.SecondCount < SecCount)
 				isBest = false;
 			else
 				if (LapTimeManager.SecondCount == SecCount)
-				if (LapTimeManager.MilliCount > MilliCount)
+				if (LapTimeManager.MilliCount < MilliCount)
 					isBest = false;
 
 		if (isBest)
@@ -61,13 +86,16 @@ public class LapComplete : MonoBehaviour
 			PlayerPrefs.SetInt("SecSave", LapTimeManager.SecondCount);
 			PlayerPrefs.SetFloat("MilliSave", LapTimeManager.MilliCount);
 		}
+		//PlayerPrefs.SetFloat("RawTime", LapTimeManager.RawTime);
 
 		CompleteText.SetActive(true);
 
 		LapTimeManager.MinuteCount = 0;
 		LapTimeManager.SecondCount = 0;
 		LapTimeManager.MilliCount = 0;
+		//LapTimeManager.RawTime = 0;
 
+		LapCounter.GetComponent<Text>().text = "" + LapsDone;
 		PointTrig.SetActive(true);
 		FinishTrig.SetActive(false);
 
