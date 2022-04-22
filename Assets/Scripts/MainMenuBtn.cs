@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuBtn : MonoBehaviour
 {
-    private int sceneIndex = 2;
+    public GameObject MainMenuPanel;
+    public GameObject SettingsPanel;
 
     public void MapSelect()
     {
@@ -18,18 +19,21 @@ public class MainMenuBtn : MonoBehaviour
         Debug.Log("Quit Game");
     }
 
-    public void PlayGame()
-    {
-        SceneManager.LoadScene(sceneIndex);
-    }
-
     public void Settings()
     {
-
+        MainMenuPanel.SetActive(false);
+        SettingsPanel.SetActive(true);
     }
 
     public void Credits()
     {
         SceneManager.LoadScene(4);
+    }
+
+    //Settings panel
+    public void MainMenu()
+    {
+        MainMenuPanel.SetActive(true);
+        SettingsPanel.SetActive(false);
     }
 }

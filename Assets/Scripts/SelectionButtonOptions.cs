@@ -8,6 +8,7 @@ public class SelectionButtonOptions : MonoBehaviour
 {
     private static int sceneIndex; //2=Foresh, 3=Night Mountain
     public static int CarType; //1=Pink, 2=Red
+    public static int RaceMode = 1; //1=Score, 2=Time
 
     private void Start()
     {
@@ -16,11 +17,6 @@ public class SelectionButtonOptions : MonoBehaviour
         sceneIndex = 2;
     }
 
-    private void Update()
-    {
-        if (MapSelectPanel.activeInHierarchy && sceneIndex == 2)
-            Map01btn.Select();
-    }
 
     //Car selection panel
     public GameObject MapSelectPanel;
@@ -39,6 +35,7 @@ public class SelectionButtonOptions : MonoBehaviour
     public void NextBtn()
     {
         MapSelectPanel.SetActive(true);
+        Map01btn.Select();
     }
 
     public void MainMenu()
@@ -49,6 +46,8 @@ public class SelectionButtonOptions : MonoBehaviour
     //Map selection panel
     public GameObject CarSelectPanel;
     public Button Map01btn;
+    public GameObject ModeInfoPanel;
+    public Button InfoBtn;
 
     public void BackBtn()
     {
@@ -65,8 +64,26 @@ public class SelectionButtonOptions : MonoBehaviour
         sceneIndex = 3;
     }
 
-    public void PlayGame()
+    public void PlayScoreMode()
     {
+        RaceMode = 1;
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void PlayTimeMode()
+    {
+        RaceMode = 2;
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void ModeInfo()
+    {
+        ModeInfoPanel.SetActive(!ModeInfoPanel.activeInHierarchy);
+        
+    }
+
+    public void OKbtn()
+    {
+        ModeInfoPanel.SetActive(false);
     }
 }
