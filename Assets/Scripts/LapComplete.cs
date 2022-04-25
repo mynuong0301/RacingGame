@@ -24,7 +24,10 @@ public class LapComplete : MonoBehaviour
     private void Start()
     {
 		LapsDone = 0;
-    }
+		PlayerPrefs.SetInt("MinSave", 2);
+		PlayerPrefs.SetInt("SecSave", 23);
+		PlayerPrefs.SetFloat("MilliSave", 5);
+	}
 
     void Update()
     {
@@ -59,7 +62,7 @@ public class LapComplete : MonoBehaviour
 				if (LapTimeManager.MilliCount > MilliCount)
 					isBest = false;
 
-		if (isBest)
+		if (isBest && SelectionButtonOptions.RaceMode == 2)
         {
 			if (LapTimeManager.SecondCount <= 9)
 			{
@@ -97,7 +100,7 @@ public class LapComplete : MonoBehaviour
 
 		LapCounter.GetComponent<Text>().text = "" + LapsDone;
 		PointTrig.SetActive(true);
-		FinishTrig.SetActive(false);
+		FinishTrig.SetActive(true);
 
 	}
 
