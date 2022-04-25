@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class YellowObjects : MonoBehaviour
 {
-    private void OnTriggerEnter()
+    private void OnTriggerEnter(Collider collision)
     {
-        ScoreMode.currentScore += 25;
+        if (collision.gameObject.tag == "Player")
+        {
+            ScoreMode.currentScore += 25;
+        }
+        else
+            //if (collision.gameObject.tag == "Car_Bot")
+            ScoreMode.botCurrentScore += 25;
         gameObject.SetActive(false);
     }
 }

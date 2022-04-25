@@ -46,17 +46,17 @@ public class LapComplete : MonoBehaviour
 
 		bool isBest = true;
 
-		if (LapTimeManager.MinuteCount < MinCount)
+		if (LapTimeManager.MinuteCount > MinCount)
 		{
 			isBest = false;
 		}
 		else
 			if (LapTimeManager.MinuteCount == MinCount)
-			if (LapTimeManager.SecondCount < SecCount)
+			if (LapTimeManager.SecondCount > SecCount)
 				isBest = false;
 			else
 				if (LapTimeManager.SecondCount == SecCount)
-				if (LapTimeManager.MilliCount < MilliCount)
+				if (LapTimeManager.MilliCount > MilliCount)
 					isBest = false;
 
 		if (isBest)

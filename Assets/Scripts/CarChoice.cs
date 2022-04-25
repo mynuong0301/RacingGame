@@ -7,6 +7,8 @@ public class CarChoice : MonoBehaviour
     //1=Red, 2=Blue
     public GameObject PinkBody;
     public GameObject RedBody;
+    public GameObject DefaultCar;
+    public GameObject YellowSPCar;
     public int CarImport;
 
     // Start is called before the first frame update
@@ -21,6 +23,10 @@ public class CarChoice : MonoBehaviour
                 break;
             case 2: RedBody.SetActive(true);
                 PinkBody.SetActive(false);
+                break;
+            case 3:
+                DefaultCar.SetActive(false);
+                YellowSPCar.SetActive(true);
                 break;
         }
             

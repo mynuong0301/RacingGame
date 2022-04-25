@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class SelectionButtonOptions : MonoBehaviour
 {
-    private static int sceneIndex; //2=Foresh, 3=Night Mountain
-    public static int CarType; //1=Pink, 2=Red
+    public static int sceneIndex; //2=Foresh, 3=Night Mountain
+    public static int CarType; //1=Pink, 2=Red, 3= Yellow Sport Car
     public static int RaceMode = 1; //1=Score, 2=Time
+
 
     private void Start()
     {
@@ -30,6 +31,11 @@ public class SelectionButtonOptions : MonoBehaviour
     public void RedCar()
     {
         CarType = 2;
+    }
+
+    public void YellowSportCar()
+    {
+        CarType = 3;
     }
 
     public void NextBtn()

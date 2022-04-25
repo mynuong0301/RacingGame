@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class RedObjects : MonoBehaviour
 {
-    private void OnTriggerEnter()
+    private void OnTriggerEnter(Collider collision)
     {
-        ScoreMode.currentScore += 100;
+        if (collision.gameObject.tag == "Player")
+        {
+            ScoreMode.currentScore += 100;
+        }
+        else
+            ScoreMode.botCurrentScore += 100;
         gameObject.SetActive(false);
     }
 }

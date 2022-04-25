@@ -9,9 +9,10 @@ public class ScoreMode : MonoBehaviour
     public GameObject TimeUI;
     public GameObject ScoreUI;
     public GameObject carBot;
-    public static int currentScore;
-    public int internalScore;
-    public GameObject scoreDisplay;
+    public static int currentScore, botCurrentScore;
+    public int internalScore, botInternalScore;
+    public GameObject myScoreDisplay;
+    public GameObject botScoreDisplay;
     public GameObject scoreObjects;
 
     // Start is called before the first frame update
@@ -23,7 +24,7 @@ public class ScoreMode : MonoBehaviour
         {
             TimeUI.SetActive(false);
             ScoreUI.SetActive(true);
-            carBot.SetActive(false);
+            //carBot.SetActive(false);
             scoreObjects.SetActive(true);
         }
     }
@@ -32,6 +33,9 @@ public class ScoreMode : MonoBehaviour
     void Update()
     {
         internalScore = currentScore;
-        scoreDisplay.GetComponent<Text>().text = "" + internalScore;
+        myScoreDisplay.GetComponent<Text>().text = "" + internalScore;
+
+        botInternalScore = botCurrentScore;
+        botScoreDisplay.GetComponent<Text>().text = "" + botInternalScore;
     }
 }

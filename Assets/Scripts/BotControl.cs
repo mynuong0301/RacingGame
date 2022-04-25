@@ -20,7 +20,7 @@ public class BotControl : MonoBehaviour
         wheelFX2.enabled = true;
         wheelFX3.enabled = true;
         wheelFX4.enabled = true;
-        carBot.GetComponent<CarController>().MaxSpeed = 100f;
+        carBot.GetComponent<CarController>().MaxSpeed = 80f;
     }
 
 }
